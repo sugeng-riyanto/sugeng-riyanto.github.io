@@ -1,0 +1,25 @@
+.jumbotron {
+  padding-top: 6rem; */
+  background-color: #e2edff;
+}
+#projects   {   
+    background-color: #78a5ec;
+}
+section{    
+    padding-top: 5rem;
+}
+
+
+/* signature */
+
+#sig-canvas {
+  border: 2px dotted #CCCCCC;
+  border-radius: 15px;
+  cursor: crosshair;
+}
+/* the end signature */
+
+
+/* next form */
+
+/* the end form */
