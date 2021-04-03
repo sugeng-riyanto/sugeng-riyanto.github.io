@@ -201,36 +201,30 @@
             <div class="row justify-content-center shadow-lg p-3 mb-5 bg-body rounded">
               <div class="col-md-8">
                 <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
-                  <strong>Terima Kasih!</strong> Pesan anda telah terkirim.
+                  <strong>Yeay!</strong> Your messages has been sent. Thank You!
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 <form id="form" name="submit-to-google-sheet">
                   <div class="mb-3">
                     <label for="name" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="name" aria-describedby="name" />
+                    <input type="text" class="form-control" id="name" aria-describedby="name" name="Fullname"/>
                   </div>
                   <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="email" name="email" />
+                    <input type="email" class="form-control" id="email" aria-describedby="email" name="Email" />
                   </div>
                   <div class="mb-3">
                     <label for="pesan" class="form-label">Message</label>
-                    <textarea class="form-control" id="pesan" rows="3" name="pesan"></textarea>
-                  </div>
-                  <button type="submit" class="btn btn-primary btn-kirim">Send</button>
-                  <button class="btn btn-primary btn-loading d-none" type="button" disabled>
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    Loading...
-                  </button>
-                </form>
+                    <textarea class="form-control" id="pesan" rows="3" name="Messages"></textarea>
+
+               
                 <!-- sign -->
 
                 <!-- Content -->
                 <div class="container text-center pt-5">
-                  <div class="row">
+                  <div class="row justify-content-center">
                     <div class="col-md-12">
-                      <h3>E-Signature</h3>
-                      <p>This is beta version. It can use digital signature on virtual meeting.</p>
+                      <label for="pesan" class="form-label">E-Signature</label>
                     </div>
                   </div>
                   <div class="row justify-content-center">
@@ -239,25 +233,32 @@
                     </div>
                   </div>
                   <div class="row justify-content-center">
-                    <div class="col-md-12">
+                  <div class="col-md-12">
                       <button class="btn btn-primary" id="sig-submitBtn">Submit Signature</button>
                       <button class="btn btn-default" id="sig-clearBtn">Clear Signature</button>
+                  </div> 
+                  </div>
+                  <br />
+                  <div class="row justify-content-center">
+                    <div class="col-md-12">
+                      <textarea id="sig-dataUrl" class="form-control d-none" rows="5">Data URL for your signature will go here!</textarea>
                     </div>
                   </div>
                   <br />
                   <div class="row justify-content-center">
                     <div class="col-md-12">
-                      <textarea id="sig-dataUrl" class="form-control" rows="5">Data URL for your signature will go here!</textarea>
-                    </div>
-                  </div>
-                  <br />
-                  <div class="row">
-                    <div class="col-md-4">
                       <img id="sig-image" src="" alt="Your signature will go here!" />
                     </div>
                   </div>
                 </div>
                 <!-- the end sign -->
+              </div>
+              <button type="submit" class="btn btn-primary btn-kirim">Send</button>
+              <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                Loading...
+              </button>
+              </form>
               </div>
             </div>
           </div>
@@ -541,27 +542,27 @@
 
     <!-- n -->
     <script>
-      const scriptURL = "https://script.google.com/macros/library/d/1OJjrkw_GBIupc3-TuhNfeOb0qAFDVIOVyXRhS2fqNsawhY4GHKXIYEs7/1";
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwv31kQjXbcKGFz9xFkG_iN0KsAV7oabTCWgjzVrfRA8K_GS0AHVwTTOKJSseLLnRRH/exec";
       const form = document.forms["submit-to-google-sheet"];
       //tangkap
-      const btnKirim = document.querySelector(".btn-kirim");
-      const btnLoading = document.querySelector(".btn-loading");
-      const myAlert = document.querySelector(".my-alert");
+      const btnKirim = document.querySelector('.btn-kirim');
+      const btnLoading = document.querySelector('.btn-loading');
+      const myAlert = document.querySelector('.my-alert');
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        //ketika tombol submit di klik
+        //ketika tombol submit diklik
         //tampilkan tombol loading, hilangkan tombol kirim
-        btnLoading.classlist.toggle("d-none");
-        btnKirim.classlist.toggle("d-none");
+        btnLoading.classList.toggle('d-none');
+        btnKirim.classList.toggle('d-none');
         //minta fetch; jS dom. Jangan default, fetch/minta url. yaitu ambil isi form. jika berhasil tuliskan sukses
         fetch(scriptURL, { method: "POST", body: new FormData(form) })
           .then((response) => {
-            btnLoading.classlist.toggle("d-none");
-            btnKirim.classlist.toggle("d-none");
-            myAlert.classlist.toggle("d-none");
+            btnLoading.classList.toggle('d-none');
+            btnKirim.classList.toggle('d-none');
+            myAlert.classList.toggle('d-none');
             //reset
             form.reset();
-            console.log("Success!", response);
+            console.log("Success!", response)
           })
           .catch((error) => console.error("Error!", error.message));
       });
