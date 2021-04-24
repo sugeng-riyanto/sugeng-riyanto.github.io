@@ -360,18 +360,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
       <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    AOS.init({
-    once:true,
-    });
+    AOS.init(  );
   </script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/TextPlugin.min.js"></script>
 <script>
 gsap.registerPlugin(TextPlugin);
+gsap.from('.jumbotron img',{duration:1, rotateY: 360, opacity:0});
 gsap.to('.lead',{duration:2, delay:1.5, text:'Physics Teachers | Coding | Science Data Analytics'}):
-gsap.from('.jumbotron img',{duration:1, rotateY:360, opacity:0});
-gsap.from('.navbar',{duration:1.5, y:'-100%', opacity:0,ease:'bounce'});
-gsap.from('.display-3',{duration:1, x: -50, opacity:0, delay:0.6,ease:'back'});
+gsap.from('.navbar',{duration:1.5, y:'-100%', opacity:0, ease:'bounce'});
+gsap.from('.display-4',{duration:1, x: -50, opacity:0, delay:0.6,ease:'back'});
  </script>
      
       <script>
